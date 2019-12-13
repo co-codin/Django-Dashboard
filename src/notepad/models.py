@@ -9,7 +9,7 @@ class Note(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.title
+        return self.url
     
     def get_absolute_url(self):
         return "/notes/{}/delete".format(self.pk)
