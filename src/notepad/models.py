@@ -18,4 +18,6 @@ class Note(models.Model):
         })
 
     def get_update_url(self):
-        return "/notes/{}/update".format(self.pk)
+        return reverse("notes:update", kwargs={
+            'id': self.id
+        })
