@@ -1,9 +1,10 @@
-from .views import create_view, list_view
-from django.conf.urls import url
+from .views import create_view, list_view, delete_view
+from django.urls import path
 
 app_name = 'notes'
 
 urlpatterns = [
-    url(r'^create/', create_view, name='create'),
-    url(r'^list', list_view, name='list')
+    path('create/', create_view, name='create'),
+    path('list/', list_view, name='list'),
+    path('<id>/delete/', delete_view, name='delete'),
 ]

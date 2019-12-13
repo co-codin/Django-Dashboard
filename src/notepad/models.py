@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 class Note(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -11,8 +12,10 @@ class Note(models.Model):
     def __str__(self):
         return self.url
     
-    def get_absolute_url(self):
-        return "/notes/{}/delete".format(self.pk)
-    
+    def get_delete_url(self):
+        return reverse("notes:delete", kwargs={
+            'id': self.id
+        })
+
     def get_update_url(self):
         return "/notes/{}/update".format(self.pk)
