@@ -3,7 +3,7 @@ from .models import Note
 from .forms import NoteModelForm
 
 def create_view(request):
-    form = NoteModelForm(request.POST or None, request.files or None)
+    form = NoteModelForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
         form.instance.user = request.user
